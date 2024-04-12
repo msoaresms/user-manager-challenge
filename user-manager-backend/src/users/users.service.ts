@@ -18,8 +18,7 @@ export class UsersService {
       createUserDto.password,
     );
     const newUser = await this.userRepository.save(createUserDto);
-    delete newUser['password'];
-    return newUser;
+    return this.findOne(newUser.id);
   }
 
   findAll() {
@@ -27,11 +26,12 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return this.userRepository.findBy({ id: id });
+    return this.userRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    await this.userRepository.update(id, updateUserDto);
+    return this.findOne(id);
   }
 
   remove(id: number) {

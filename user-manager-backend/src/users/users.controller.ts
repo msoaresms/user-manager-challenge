@@ -3,10 +3,10 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   BadRequestException,
+  Put,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -38,9 +38,16 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService.update(+id, updateUserDto).catch((e) => {
+      if (/(email)[\s\S]+(already exists)/.test(e.detail)) {
+        throw new BadRequestException(
+          'Account with this email already exists.',
+        );
+      }
+      return e;
+    });
   }
 
   @Delete(':id')
