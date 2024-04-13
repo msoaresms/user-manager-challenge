@@ -29,14 +29,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/materialize-css/dist/js/materialize.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -95,6 +89,6 @@
     }
   },
   "cli": {
-    "analytics": "0371d32c-3efa-421c-9286-be1ac4f444d3"
+    "analytics": "c97b9429-95f4-407a-875a-5f9a37a2775b"
   }
 }

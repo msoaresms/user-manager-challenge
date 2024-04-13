@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Gerenciar usuários</h1>
+  <table class="striped highlight responsive-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Nível de acesso</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
