@@ -14,7 +14,7 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column({ select: false, update: false })
+  @Column({ update: false })
   password: string;
 
   @Column({ type: 'enum', enum: ['ADMIN', 'USER'], default: 'USER' })
