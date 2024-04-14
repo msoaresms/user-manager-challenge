@@ -20,11 +20,7 @@ const USERS_ROUTES: Routes = [
   {
     path: 'add',
     component: AddUserComponent,
-  },
-  // {
-  //   path: '**',
-  //   redirectTo: 'list',
-  // },
+  }
 ];
 
 @NgModule({
@@ -32,7 +28,7 @@ const USERS_ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(USERS_ROUTES),
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
 })
 export class UsersModule {}

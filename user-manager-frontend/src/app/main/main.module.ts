@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { UsersModule } from '../users/users.module';
 import { ChartsModule } from '../charts/charts.module';
+import { authGuard } from '../auth/auth.guard';
 
 const MAIN_ROUTES: Routes = [
   {
-    path: '',
+    path: 'main',
     component: MainComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -35,7 +37,7 @@ const MAIN_ROUTES: Routes = [
     CommonModule,
     RouterModule.forChild(MAIN_ROUTES),
     UsersModule,
-    ChartsModule,
+    ChartsModule
   ],
 })
 export class MainModule {}
