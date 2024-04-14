@@ -1,31 +1,33 @@
-<div class="container">
+<div class="list-container">
   <h3>Gerenciar usuários</h3>
-  <table class="striped highlight responsive-table z-depth-2">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Email</th>
-        <th>Nível de acesso</th>
-        <th>Status</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
+  <div class="z-depth-2">
+    <table class="striped highlight responsive-table ">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Email</th>
+          <th>Nível de acesso</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr *ngFor="let user of users; let i = index">
-        <td>{{ user.name }}</td>
-        <td>{{ user.lastname }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.isAdmin ? "Administrador" : "Usuário" }}</td>
-        <td>{{ user.isActive ? "Ativo" : "Inativo" }}</td>
-        <td>
-          <i class="material-icons" (click)="openEditUser(i)">edit</i>
-          <i class="material-icons" (click)="openDeleteUser(i)">delete</i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.isAdmin ? "Administrador" : "Usuário" }}</td>
+          <td>{{ user.isActive ? "Ativo" : "Inativo" }}</td>
+          <td>
+            <i class="material-icons" (click)="openEditUser(i)">edit</i>
+            <i class="material-icons" (click)="openDeleteUser(i)">delete</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div id="editModal" class="modal">

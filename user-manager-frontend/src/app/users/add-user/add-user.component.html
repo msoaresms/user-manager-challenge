@@ -1,7 +1,12 @@
 <div class="container">
   <h3>Adicionar usuário</h3>
   <div class="form-container z-depth-2">
-    <form action="" [formGroup]="addUserForm" class="row">
+    <form
+      action=""
+      [formGroup]="addUserForm"
+      class="row"
+      (submit)="addNewUser()"
+    >
       <div class="input-field col s6">
         <input formControlName="name" id="name" type="text" class="validate" />
         <label for="name">Nome</label>
@@ -48,9 +53,9 @@
         </label>
       </p>
       <div class="col s12">
-        <a class="waves-effect waves-light btn" (click)="addNewUser()"
-          >Adicionar usuário</a
-        >
+        <button class="waves-effect waves-light btn" type="submit" [disabled]="!addUserForm.valid">
+          Adicionar usuário
+        </button>
       </div>
     </form>
   </div>

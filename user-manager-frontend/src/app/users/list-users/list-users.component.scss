@@ -1,6 +1,6 @@
 table {
   margin-top: 3rem;
-  border-radius: 1rem;
+
 
   td {
     i {
@@ -13,5 +13,15 @@ table {
         margin-right: 1rem;
       }
     }
+  }
+}
+
+.list-container {
+  margin: 3rem;
+
+  div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
   }
 }
