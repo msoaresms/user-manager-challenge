@@ -1,0 +1,51 @@
+<div class="container">
+  <h3>Adicionar usuário</h3>
+  <div class="form-container z-depth-2">
+    <form action="" [formGroup]="addUserForm" class="row">
+      <div class="input-field col s6">
+        <input formControlName="name" id="name" type="text" class="validate" />
+        <label for="name">Nome</label>
+      </div>
+
+      <div class="input-field col s6">
+        <input
+          formControlName="lastname"
+          id="lastname"
+          type="text"
+          class="validate"
+        />
+        <label for="lastname">Sobrenome</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input
+          formControlName="email"
+          id="email"
+          type="text"
+          class="validate"
+        />
+        <label for="email">E-mail</label>
+      </div>
+      <div class="input-field col s8">
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+          class="validate"
+        />
+        <label for="password">Senha</label>
+      </div>
+      <p class="col s4">
+        <label>
+          <input type="checkbox" class="filled-in" formControlName="isAdmin" />
+          <span>Administrador</span>
+        </label>
+      </p>
+      <div class="col s12">
+        <a class="waves-effect waves-light btn" (click)="addNewUser()"
+          >Adicionar usuário</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

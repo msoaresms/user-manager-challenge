@@ -1,0 +1,17 @@
+table {
+  margin-top: 3rem;
+  border-radius: 1rem;
+
+  td {
+    i {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

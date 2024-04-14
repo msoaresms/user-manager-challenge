@@ -42,7 +42,13 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    await this.userRepository.update(id, updateUserDto);
+    const data = {
+      name: updateUserDto.name,
+      lastname: updateUserDto.lastname,
+      email: updateUserDto.email,
+      role: updateUserDto.role,
+    };
+    await this.userRepository.update(id, data);
     return this.findOne(id);
   }
 

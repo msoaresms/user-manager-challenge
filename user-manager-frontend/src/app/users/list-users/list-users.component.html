@@ -1,22 +1,84 @@
 <div class="container">
-  <h1>Gerenciar usuários</h1>
-  <table class="striped highlight responsive-table">
+  <h3>Gerenciar usuários</h3>
+  <table class="striped highlight responsive-table z-depth-2">
     <thead>
       <tr>
         <th>Nome</th>
         <th>Sobrenome</th>
         <th>Email</th>
         <th>Nível de acesso</th>
+        <th>Ações</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users; let i = index">
         <td>{{ user.name }}</td>
         <td>{{ user.lastname }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.role }}</td>
+        <td>{{ user.role == "ADMIN" ? "Administrador" : "Usuário" }}</td>
+        <td>
+          <i class="material-icons" (click)="openEditUser(i)">edit</i>
+          <i class="material-icons" (click)="openDeleteUser(i)">delete</i>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h4>Editar usuário</h4>
+    <form action="" [formGroup]="editUserForm" class="row">
+      <div class="input-field col s6">
+        <input formControlName="name" id="name" type="text" class="validate" />
+        <label for="name" class="active">Nome</label>
+      </div>
+
+      <div class="input-field col s6">
+        <input
+          formControlName="lastname"
+          id="lastname"
+          type="text"
+          class="validate"
+        />
+        <label for="lastname" class="active">Sobrenome</label>
+      </div>
+
+      <div class="input-field col s8">
+        <input
+          formControlName="email"
+          id="email"
+          type="text"
+          class="validate"
+        />
+        <label for="email" class="active">E-mail</label>
+      </div>
+      <p class="col s4">
+        <label>
+          <input type="checkbox" class="filled-in" formControlName="isAdmin" />
+          <span>Administrador</span>
+        </label>
+      </p>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    <a class="waves-effect waves-green btn-flat" (click)="editUser()"
+      >Confirmar</a
+    >
+  </div>
+</div>
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h4>Deletar usuário</h4>
+    <p>Deseja excluir a conta do usuário de forma definitiva?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Não</a>
+    <a class="waves-effect waves-green btn-flat" (click)="deleteUser()"
+      >Sim, excluir</a
+    >
+  </div>
 </div>
