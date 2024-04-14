@@ -128,7 +128,12 @@ export class UsersService {
 
     const validPassword = bcrypt.compareSync(loginDto.password, user.password);
     if (!validPassword) throw new UnauthorizedException();
-    return { access_token: this.jwtService.sign({ ...user }) };
+    return {
+      access_token: this.jwtService.sign({ ...user }),
+      name: user.name,
+      lastname: user.lastname,
+      email: user.email,
+    };
   }
 
   checkIfFoundUser(user: User) {

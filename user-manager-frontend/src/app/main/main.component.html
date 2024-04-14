@@ -11,9 +11,16 @@
           class="circle"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRquNpFeEVVURyaYfCOAKJyGn0UK_AQCKvOWvJ3iF2uA&s"
       /></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#name"
+        ><span class="white-text name"
+          >{{ authService.authData?.name }}
+          {{ authService.authData?.lastname }}</span
+        ></a
+      >
       <a href="#email"
-        ><span class="white-text email">jdandturk&#64;gmail.com</span></a
+        ><span class="white-text email">{{
+          authService.authData?.email
+        }}</span></a
       >
     </div>
   </li>

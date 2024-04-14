@@ -1,0 +1,19 @@
+.bg {
+  height: 100vh;
+  background-color: darkgrey;
+
+  form {
+    background-color: white;
+    transform: translateY(50%);
+    border-radius: 1rem;
+    padding: 1rem;
+
+    h5, h4 {
+      text-align: center;
+    }
+
+    .btn {
+      width: 100%;
+  }
+  }
+}
