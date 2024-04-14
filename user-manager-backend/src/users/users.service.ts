@@ -42,18 +42,80 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const data = {
-      name: updateUserDto.name,
-      lastname: updateUserDto.lastname,
-      email: updateUserDto.email,
-      role: updateUserDto.role,
-    };
-    await this.userRepository.update(id, data);
+    await this.userRepository.update(id, updateUserDto);
     return this.findOne(id);
   }
 
   remove(id: number) {
     return this.userRepository.delete(id);
+  }
+
+  async countUsersGeneral() {
+    const activeUsers = await this.userRepository.countBy({ isActive: true });
+    const inactiveUsers = await this.userRepository.countBy({
+      isActive: false,
+    });
+    return { activeUsers, inactiveUsers, total: activeUsers + inactiveUsers };
+  }
+
+  async countUsersAdmin() {
+    const activeAdminUsers = await this.userRepository.countBy({
+      isActive: true,
+      isAdmin: true,
+    });
+    const inactiveAdminUsers = await this.userRepository.countBy({
+      isActive: false,
+      isAdmin: true,
+    });
+    return {
+      activeAdminUsers,
+      inactiveAdminUsers,
+      total: activeAdminUsers + inactiveAdminUsers,
+    };
+  }
+
+  async countUsers() {
+    const activeUsers = await this.userRepository.countBy({
+      isActive: true,
+      isAdmin: false,
+    });
+    const inactiveUsers = await this.userRepository.countBy({
+      isActive: false,
+      isAdmin: false,
+    });
+    return {
+      activeUsers,
+      inactiveUsers,
+      total: activeUsers + inactiveUsers,
+    };
+  }
+
+  async countUsersByRole() {
+    const activeUsers = await this.userRepository.countBy({
+      isActive: true,
+      isAdmin: false,
+    });
+    const inactiveUsers = await this.userRepository.countBy({
+      isActive: false,
+      isAdmin: false,
+    });
+    const activeAdmins = await this.userRepository.countBy({
+      isActive: true,
+      isAdmin: true,
+    });
+    const inactiveAdmins = await this.userRepository.countBy({
+      isActive: false,
+      isAdmin: true,
+    });
+    return {
+      activeUsers,
+      inactiveUsers,
+      activeAdmins,
+      inactiveAdmins,
+      totalUsers: activeUsers + inactiveUsers,
+      totalAdmin: activeAdmins + inactiveAdmins,
+      total: activeUsers + inactiveUsers + activeAdmins + inactiveAdmins,
+    };
   }
 
   hashPassword(password: string) {

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col s6">
+    <div class="z-depth-3 chart-area">
+      <h5>Todos os níveis de acesso (geral)</h5>
+      <app-pie-chart
+        [data]="statusGeneral"
+        [chartId]="'chart1'"
+      ></app-pie-chart>
+    </div>
+  </div>
+  <div class="col s6">
+    <div class="z-depth-3 chart-area">
+      <h5>Todos os níveis de acesso (por perfil)</h5>
+      <app-pie-chart [data]="statusByRole" [chartId]="'chart4'"></app-pie-chart>
+    </div>
+  </div>
+  <div class="col s6">
+    <div class="z-depth-3 chart-area">
+      <h5>Administradores</h5>
+      <app-pie-chart [data]="statusAdmin" [chartId]="'chart2'"></app-pie-chart>
+    </div>
+  </div>
+  <div class="col s6">
+    <div class="z-depth-3 chart-area">
+      <h5>Não administradores</h5>
+      <app-pie-chart [data]="statusUser" [chartId]="'chart3'"></app-pie-chart>
+    </div>
+  </div>
+
+</div>

@@ -4,10 +4,10 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from '../users.service';
+import { UserService } from './users.service';
 import { inject } from '@angular/core';
 
-export const usersResolve: ResolveFn<any> = (
+export const usersResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Observable<any> => {

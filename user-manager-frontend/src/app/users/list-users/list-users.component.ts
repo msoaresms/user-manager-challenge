@@ -18,7 +18,7 @@ export class ListUsersComponent {
     lastname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.email]),
     isAdmin: new FormControl(false, []),
-    role: new FormControl('', []),
+    isActive: new FormControl(false, []),
   });
   private actionIndex = 0;
 
@@ -36,17 +36,12 @@ export class ListUsersComponent {
 
   public openEditUser(index: number) {
     this.actionIndex = index;
-    const userData = {
-      ...this.users[index],
-      isAdmin: this.users[index].role == 'ADMIN' ? true : false,
-    };
-    this.editUserForm.patchValue(userData);
+    this.editUserForm.patchValue(this.users[this.actionIndex]);
     this.editModalInstance.open();
   }
 
   public editUser() {
     const data = this.editUserForm.value;
-    data.role = data.isAdmin == true ? 'ADMIN' : 'USER';
     this.userService.editUser(data, this.users[this.actionIndex].id).subscribe({
       next: (result) => {
         this.users[this.actionIndex] = result;

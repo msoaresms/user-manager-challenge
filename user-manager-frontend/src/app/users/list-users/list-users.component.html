@@ -7,6 +7,7 @@
         <th>Sobrenome</th>
         <th>Email</th>
         <th>Nível de acesso</th>
+        <th>Status</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -16,7 +17,8 @@
         <td>{{ user.name }}</td>
         <td>{{ user.lastname }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.role == "ADMIN" ? "Administrador" : "Usuário" }}</td>
+        <td>{{ user.isAdmin ? "Administrador" : "Usuário" }}</td>
+        <td>{{ user.isActive ? "Ativo" : "Inativo" }}</td>
         <td>
           <i class="material-icons" (click)="openEditUser(i)">edit</i>
           <i class="material-icons" (click)="openDeleteUser(i)">delete</i>
@@ -45,7 +47,7 @@
         <label for="lastname" class="active">Sobrenome</label>
       </div>
 
-      <div class="input-field col s8">
+      <div class="input-field col s6">
         <input
           formControlName="email"
           id="email"
@@ -54,10 +56,16 @@
         />
         <label for="email" class="active">E-mail</label>
       </div>
-      <p class="col s4">
+      <p class="col s3">
         <label>
           <input type="checkbox" class="filled-in" formControlName="isAdmin" />
           <span>Administrador</span>
+        </label>
+      </p>
+      <p class="col s3">
+        <label>
+          <input type="checkbox" class="filled-in" formControlName="isActive" />
+          <span>Usuário ativo</span>
         </label>
       </p>
     </form>

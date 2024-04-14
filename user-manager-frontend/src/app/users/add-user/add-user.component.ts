@@ -17,14 +17,12 @@ export class AddUserComponent {
     email: new FormControl('', [Validators.email]),
     password: new FormControl('', [Validators.required]),
     isAdmin: new FormControl(false, []),
-    role: new FormControl('', []),
+    isActive: new FormControl(false, []),
   });
 
   public addNewUser() {
     if (this.addUserForm.valid) {
       const data = this.addUserForm.value;
-      data.role = data.isAdmin == true ? 'ADMIN' : 'USER';
-
       this.userService.addUser(data).subscribe({
         next: (result) => {
           M.toast({ html: 'Usuário adicionado com sucesso' });

@@ -34,6 +34,26 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('status-general')
+  countUsersGeneral() {
+    return this.usersService.countUsersGeneral();
+  }
+
+  @Get('status-admin')
+  countUsersAdmin() {
+    return this.usersService.countUsersAdmin();
+  }
+
+  @Get('status-user')
+  countUsers() {
+    return this.usersService.countUsers();
+  }
+
+  @Get('status-by-role')
+  countUsersByRole() {
+    return this.usersService.countUsersByRole();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);

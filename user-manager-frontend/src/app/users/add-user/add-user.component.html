@@ -26,7 +26,7 @@
         />
         <label for="email">E-mail</label>
       </div>
-      <div class="input-field col s8">
+      <div class="input-field col s6">
         <input
           formControlName="password"
           id="password"
@@ -35,10 +35,16 @@
         />
         <label for="password">Senha</label>
       </div>
-      <p class="col s4">
+      <p class="col s3">
         <label>
           <input type="checkbox" class="filled-in" formControlName="isAdmin" />
           <span>Administrador</span>
+        </label>
+      </p>
+      <p class="col s3">
+        <label>
+          <input type="checkbox" class="filled-in" formControlName="isActive" />
+          <span>Usuário ativo</span>
         </label>
       </p>
       <div class="col s12">
