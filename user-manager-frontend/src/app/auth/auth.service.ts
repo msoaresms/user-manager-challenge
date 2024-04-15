@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -33,7 +34,10 @@ export class AuthService {
   }
 
   login(loginForm: any) {
-    return this.http.post('http://localhost:3000/users/auth', loginForm);
+    return this.http.post(
+      `${environment.backend_base_url}/users/auth`,
+      loginForm
+    );
   }
 
   isAuthenticated() {

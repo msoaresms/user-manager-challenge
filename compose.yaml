@@ -1,0 +1,44 @@
+version: '3'
+services:
+
+  database:
+    container_name: user-manager-database
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=ck2GEqoCs7
+      - POSTGRES_USER=user-manager
+    networks:
+      - application
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - application
+
+  backend:
+    container_name: user-manager-backend
+    build:
+      context: ./user-manager-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - application
+
+  frontend:
+    container_name: user-manager-frontend
+    build:
+      context: ./user-manager-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - application
+
+networks:
+  application:
+    driver: bridge
