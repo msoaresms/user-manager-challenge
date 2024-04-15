@@ -21,15 +21,7 @@ export class LoginComponent {
 
   public login() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (result) => {
-          localStorage.setItem('auth_data', JSON.stringify(result));
-          this.router.navigate(['main', 'users', 'list']);
-        },
-        error: (error) => {
-          M.toast({ html: error.error.message });
-        },
-      });
+      this.authService.login(this.loginForm.value);
     }
   }
 }

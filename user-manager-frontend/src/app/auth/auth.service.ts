@@ -34,10 +34,18 @@ export class AuthService {
   }
 
   login(loginForm: any) {
-    return this.http.post(
-      `${environment.backend_base_url}/users/auth`,
-      loginForm
-    );
+    return this.http
+      .post(`${environment.backend_base_url}/users/auth`, loginForm)
+      .subscribe({
+        next: (result: any) => {
+          localStorage.setItem('auth_data', JSON.stringify(result));
+          this.authData.next(result);
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          M.toast({ html: error.error.message });
+        },
+      });
   }
 
   isAuthenticated() {
@@ -48,11 +56,11 @@ export class AuthService {
       if (isTokenValid) {
         return true;
       } else {
-        this.router.navigate(['auth']);
+        this.router.navigate(['/', 'auth']);
         return false;
       }
     } catch (error) {
-      this.router.navigate(['auth']);
+      this.router.navigate(['/', 'auth']);
       return false;
     }
   }

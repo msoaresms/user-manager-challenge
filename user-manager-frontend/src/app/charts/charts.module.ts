@@ -12,11 +12,6 @@ import {
 
 const CHARTS_ROUTES: Routes = [
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent,
     resolve: {
@@ -25,6 +20,11 @@ const CHARTS_ROUTES: Routes = [
       statusUser: statusUserResolver,
       statusByRole: statusByRole,
     },
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
 ];
 

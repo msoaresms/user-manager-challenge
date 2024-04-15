@@ -8,11 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const USERS_ROUTES: Routes = [
   {
-    path: '',
-    redirectTo: 'list',
-    pathMatch: 'full',
-  },
-  {
     path: 'list',
     component: ListUsersComponent,
     resolve: { usersList: usersResolver },
@@ -20,7 +15,12 @@ const USERS_ROUTES: Routes = [
   {
     path: 'add',
     component: AddUserComponent,
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'list',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
