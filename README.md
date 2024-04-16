@@ -1,10 +1,10 @@
 # User Manager
 
-Este repositório contém o código-fonte de um sistema de gerenciamento de usuários, dividido em duas partes principais: backend e frontend. O backend é desenvolvido com NestJS e utiliza TypeORM para interagir com um banco de dados Postgres. O frontend é desenvolvido com Angular e utiliza o framework Materialize CSS para o design.
+Este repositório contém o código-fonte de um sistema de gerenciamento de usuários, dividido em duas partes principais: backend e frontend. O backend é desenvolvido com NestJS e utiliza TypeORM para interagir com um banco de dados Postgres. O frontend é desenvolvido com Angular e utiliza o framework Materialize CSS para o design e a biblioteca D3Chart para a implementação dos gráficos.
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de ter o Docker instalado na sua máquina.
+Antes de começar, certifique-se de ter o Docker, Node e NPM instalados na sua máquina.
 
 ## Configuração
 
