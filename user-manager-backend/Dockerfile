@@ -8,7 +8,7 @@ RUN npm install -g @nestjs/cli
 
 RUN npm install
 
-RUN nest build
+RUN npm run build
 
 RUN npm rebuild bcrypt --build-from-source
 

@@ -5,12 +5,13 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions, runSeeders } from 'typeorm-extension';
 
 const options: DataSourceOptions & SeederOptions = {
-  type: 'postgres',
-  host: '172.19.0.4',
-  port: 5432,
-  password: 'ck2GEqoCs7',
-  username: 'user-manager',
-  database: 'user-manager',
+  //@ts-ignore
+  type: process.env.DATABASE_TYPE,
+  host: process.env.DATABASE_HOST,
+  port: Number(process.env.DATABASE_PORT),
+  password: process.env.DATABASE_PASSWORD,
+  username: process.env.DATABASE_USERNAME,
+  database: process.env.DATABASE_NAME,
   synchronize: true,
   entities: [User],
   factories: [UsersFactory],

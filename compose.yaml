@@ -8,6 +8,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=ck2GEqoCs7
       - POSTGRES_USER=user-manager
+    ports:
+      - 5432:5432
     networks:
       - application
 
